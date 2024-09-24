@@ -62,14 +62,15 @@ public class Buttons : MonoBehaviour
             TransformScale();
             Fade();
         }
-
+    }
+    public void OnClickReturn()
+    {
     }
     public void OnClickPlay()
     {
     }
     public void OnClickOptions()
     {
-
     }
     public void OnClickExit()
     {
