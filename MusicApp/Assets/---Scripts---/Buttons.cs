@@ -18,6 +18,8 @@ public class Buttons : MonoBehaviour
     [SerializeField] private CanvasGroup _fadeCanvasGroup;
     [SerializeField] private FadeScript _fadeScript;
 
+    [SerializeField] private FileManager _fileManager;
+
     private bool _isQuit;
     private bool CanTimer;
     private bool CanInterract;
@@ -50,7 +52,10 @@ public class Buttons : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene(_sceneName);
+                if (_sceneName.Length > 0)
+                {
+                    SceneManager.LoadScene(_sceneName);
+                }
             }
         }
     }
@@ -65,6 +70,10 @@ public class Buttons : MonoBehaviour
     }
     public void OnClickReturn()
     {
+    }
+    public void OnClickAddMusic()
+    {
+        _fileManager.OpenFileBrowser();
     }
     public void OnClickPlay()
     {
