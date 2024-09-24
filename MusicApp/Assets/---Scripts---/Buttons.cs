@@ -11,9 +11,6 @@ public class Buttons : MonoBehaviour
     [SerializeField] private string _sceneName;
     [SerializeField] private float _durationTime;
 
-    [SerializeField] private Vector3 _buttonOriginSize;
-    [SerializeField] private Vector3 _buttonNewSize;
-
     [SerializeField] private Button _thisButton;
     [SerializeField] private Image _thisImageBackground;
 
@@ -21,6 +18,7 @@ public class Buttons : MonoBehaviour
     [SerializeField] private CanvasGroup _fadeCanvasGroup;
     [SerializeField] private FadeScript _fadeScript;
 
+    private bool _isQuit;
     private bool CanTimer;
     private bool CanInterract;
     private float _currentTimerFade;
@@ -31,6 +29,7 @@ public class Buttons : MonoBehaviour
         _currentTimerFade = 0;
         _fadeObj.SetActive(false);
         CanInterract = true;
+        _isQuit = false;
     }
     private void Update()
     {
@@ -45,7 +44,14 @@ public class Buttons : MonoBehaviour
     {
         if (_currentTimerFade > _durationTime)
         {
-            SceneManager.LoadScene(_sceneName);
+            if (_isQuit)
+            {
+                Application.Quit();
+            }
+            else
+            {
+                SceneManager.LoadScene(_sceneName);
+            }
         }
     }
 
@@ -54,8 +60,7 @@ public class Buttons : MonoBehaviour
         if (CanInterract)
         {
             TransformScale();
-            //Fade();
-            //CanInterract = false;
+            Fade();
         }
 
     }
@@ -68,12 +73,13 @@ public class Buttons : MonoBehaviour
     }
     public void OnClickExit()
     {
-
-        Application.Quit();
+        _isQuit = true;
+        Fade();
     }
 
     private void Fade()
     {
+        CanInterract = false;
         _fadeObj.SetActive(true);
         _fadeCanvasGroup.alpha = 0;
         _fadeScript.UI_ToActivate_or_not = _fadeCanvasGroup;
@@ -85,6 +91,5 @@ public class Buttons : MonoBehaviour
     {
         _thisButton.transform.DOComplete();
         _thisButton.transform.DOPunchScale(new Vector3(0.5f, 0.5f, 0), 0.3f, 2, 0.3f);
-        _thisButton.transform.DOComplete();
     }
 }
