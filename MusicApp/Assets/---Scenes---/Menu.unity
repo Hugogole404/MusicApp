@@ -310,7 +310,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 125637961}
         m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
-        m_MethodName: OnClickPlaylist
+        m_MethodName: OnClickLoadSceneButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -377,7 +377,7 @@ MonoBehaviour:
   _fadeObj: {fileID: 2984014}
   _fadeCanvasGroup: {fileID: 2984018}
   _fadeScript: {fileID: 2984019}
-  _fileManager: {fileID: 0}
+  _fileManager: {fileID: 195252315}
 --- !u!1 &195252313
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,10 +422,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e22c5a2ae15ad59448ab62e590af1aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioS: {fileID: 0}
-  ActualSong: {fileID: 0}
-  FileExtension: 0
-  AudioSource: {fileID: 1198035353}
+  AllSongs: []
+  ActualPlayedSong: {fileID: 0}
+  AudioSource: {fileID: 0}
 --- !u!1 &358013457
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,7 +1103,7 @@ MonoBehaviour:
   _fadeObj: {fileID: 2984014}
   _fadeCanvasGroup: {fileID: 2984018}
   _fadeScript: {fileID: 2984019}
-  _fileManager: {fileID: 0}
+  _fileManager: {fileID: 195252315}
 --- !u!114 &921968251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1151,7 +1150,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 921968250}
         m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
-        m_MethodName: OnClickPlaylist
+        m_MethodName: OnClickLoadSceneButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1870,7 +1869,7 @@ MonoBehaviour:
   _fadeObj: {fileID: 2984014}
   _fadeCanvasGroup: {fileID: 2984018}
   _fadeScript: {fileID: 2984019}
-  _fileManager: {fileID: 0}
+  _fileManager: {fileID: 195252315}
 --- !u!114 &2079689515
 MonoBehaviour:
   m_ObjectHideFlags: 0

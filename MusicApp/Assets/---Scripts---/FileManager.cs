@@ -8,15 +8,17 @@ using static Unity.VisualScripting.Member;
 
 public class FileManager : MonoBehaviour
 {
-    public AudioClip AudioS;
-    public AudioClip ActualSong;
-    public AudioType FileExtension;
-
+    public List<AudioClip> AllSongs;
+    public AudioClip ActualPlayedSong;
     public AudioSource AudioSource;
+
+    private void Start()
+    {
+        AllSongs = new List<AudioClip>();
+    }
 
     public void OpenFileBrowser()
     {
-
         var bp = new BrowserProperties();
         bp.filter = "Music files (*.mp3)|*.mp3|All Files (*.*)|*.*";
         bp.filterIndex = 0;
@@ -26,14 +28,13 @@ public class FileManager : MonoBehaviour
             p = path;
             Debug.Log(path);
             WWW www = new WWW(p);
-            AudioSource.clip = www.GetAudioClip();
-            AudioSource.Play();
-
+            AllSongs.Add(www.GetAudioClip());
+            ActualPlayedSong = www.GetAudioClip();
+            //_audioSource.clip = www.GetAudioClip();
+            ////_audioSource.Play();
+            //AllSongs.Add(_audioSource.clip);
         });
-
-
-
-
+        
         //var browserProp = new BrowserProperties();
         //browserProp.filter = "Audio files (*.mp3, *.wav, *.wma) | *.mp3, *.wav, *.wma";
         //browserProp.filterIndex = 0;
